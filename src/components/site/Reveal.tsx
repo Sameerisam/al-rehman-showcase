@@ -5,9 +5,10 @@ type RevealProps = {
   children: ReactNode;
   className?: string;
   delay?: number;
+  variant?: "up" | "left" | "right" | "scale";
 };
 
-export function Reveal({ children, className, delay = 0 }: RevealProps) {
+export function Reveal({ children, className, delay = 0, variant = "up" }: RevealProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
 
@@ -21,7 +22,7 @@ export function Reveal({ children, className, delay = 0 }: RevealProps) {
           observer.disconnect();
         }
       },
-      { threshold: 0.12, rootMargin: "0px 0px -40px 0px" },
+      { threshold: 0.1, rootMargin: "0px 0px -32px 0px" },
     );
     observer.observe(el);
     return () => observer.disconnect();
@@ -30,7 +31,14 @@ export function Reveal({ children, className, delay = 0 }: RevealProps) {
   return (
     <div
       ref={ref}
-      className={cn("reveal", visible && "is-visible", className)}
+      className={cn(
+        "reveal",
+        variant === "left" && "reveal-left",
+        variant === "right" && "reveal-right",
+        variant === "scale" && "reveal-scale",
+        visible && "is-visible",
+        className,
+      )}
       style={delay ? { transitionDelay: `${delay}ms` } : undefined}
     >
       {children}

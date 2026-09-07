@@ -10,33 +10,180 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as DealsRouteImport } from './routes/deals'
+import { Route as GalleryRouteImport } from './routes/gallery'
+import { Route as MenuIndexRouteImport } from './routes/menu/index'
+import { Route as MenuBurgersRouteImport } from './routes/menu/burgers'
+import { Route as MenuPastaRouteImport } from './routes/menu/pasta'
+import { Route as MenuPizzaRouteImport } from './routes/menu/pizza'
+import { Route as MenuRollsRouteImport } from './routes/menu/rolls'
+import { Route as MenuSidesRouteImport } from './routes/menu/sides'
+import { Route as MenuWrapsRouteImport } from './routes/menu/wraps'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DealsRoute = DealsRouteImport.update({
+  id: '/deals',
+  path: '/deals',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GalleryRoute = GalleryRouteImport.update({
+  id: '/gallery',
+  path: '/gallery',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MenuIndexRoute = MenuIndexRouteImport.update({
+  id: '/menu/',
+  path: '/menu/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MenuBurgersRoute = MenuBurgersRouteImport.update({
+  id: '/menu/burgers',
+  path: '/menu/burgers',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MenuPastaRoute = MenuPastaRouteImport.update({
+  id: '/menu/pasta',
+  path: '/menu/pasta',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MenuPizzaRoute = MenuPizzaRouteImport.update({
+  id: '/menu/pizza',
+  path: '/menu/pizza',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MenuRollsRoute = MenuRollsRouteImport.update({
+  id: '/menu/rolls',
+  path: '/menu/rolls',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MenuSidesRoute = MenuSidesRouteImport.update({
+  id: '/menu/sides',
+  path: '/menu/sides',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MenuWrapsRoute = MenuWrapsRouteImport.update({
+  id: '/menu/wraps',
+  path: '/menu/wraps',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
+  '/deals': typeof DealsRoute
+  '/gallery': typeof GalleryRoute
+  '/menu/burgers': typeof MenuBurgersRoute
+  '/menu/pasta': typeof MenuPastaRoute
+  '/menu/pizza': typeof MenuPizzaRoute
+  '/menu/rolls': typeof MenuRollsRoute
+  '/menu/sides': typeof MenuSidesRoute
+  '/menu/wraps': typeof MenuWrapsRoute
+  '/menu/': typeof MenuIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
+  '/deals': typeof DealsRoute
+  '/gallery': typeof GalleryRoute
+  '/menu/burgers': typeof MenuBurgersRoute
+  '/menu/pasta': typeof MenuPastaRoute
+  '/menu/pizza': typeof MenuPizzaRoute
+  '/menu/rolls': typeof MenuRollsRoute
+  '/menu/sides': typeof MenuSidesRoute
+  '/menu/wraps': typeof MenuWrapsRoute
+  '/menu': typeof MenuIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
+  '/deals': typeof DealsRoute
+  '/gallery': typeof GalleryRoute
+  '/menu/burgers': typeof MenuBurgersRoute
+  '/menu/pasta': typeof MenuPastaRoute
+  '/menu/pizza': typeof MenuPizzaRoute
+  '/menu/rolls': typeof MenuRollsRoute
+  '/menu/sides': typeof MenuSidesRoute
+  '/menu/wraps': typeof MenuWrapsRoute
+  '/menu/': typeof MenuIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/deals'
+    | '/gallery'
+    | '/menu/burgers'
+    | '/menu/pasta'
+    | '/menu/pizza'
+    | '/menu/rolls'
+    | '/menu/sides'
+    | '/menu/wraps'
+    | '/menu/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/deals'
+    | '/gallery'
+    | '/menu/burgers'
+    | '/menu/pasta'
+    | '/menu/pizza'
+    | '/menu/rolls'
+    | '/menu/sides'
+    | '/menu/wraps'
+    | '/menu'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/deals'
+    | '/gallery'
+    | '/menu/burgers'
+    | '/menu/pasta'
+    | '/menu/pizza'
+    | '/menu/rolls'
+    | '/menu/sides'
+    | '/menu/wraps'
+    | '/menu/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  ContactRoute: typeof ContactRoute
+  DealsRoute: typeof DealsRoute
+  GalleryRoute: typeof GalleryRoute
+  MenuBurgersRoute: typeof MenuBurgersRoute
+  MenuPastaRoute: typeof MenuPastaRoute
+  MenuPizzaRoute: typeof MenuPizzaRoute
+  MenuRollsRoute: typeof MenuRollsRoute
+  MenuSidesRoute: typeof MenuSidesRoute
+  MenuWrapsRoute: typeof MenuWrapsRoute
+  MenuIndexRoute: typeof MenuIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +195,99 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/deals': {
+      id: '/deals'
+      path: '/deals'
+      fullPath: '/deals'
+      preLoaderRoute: typeof DealsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gallery': {
+      id: '/gallery'
+      path: '/gallery'
+      fullPath: '/gallery'
+      preLoaderRoute: typeof GalleryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/menu/': {
+      id: '/menu/'
+      path: '/menu'
+      fullPath: '/menu/'
+      preLoaderRoute: typeof MenuIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/menu/burgers': {
+      id: '/menu/burgers'
+      path: '/menu/burgers'
+      fullPath: '/menu/burgers'
+      preLoaderRoute: typeof MenuBurgersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/menu/pasta': {
+      id: '/menu/pasta'
+      path: '/menu/pasta'
+      fullPath: '/menu/pasta'
+      preLoaderRoute: typeof MenuPastaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/menu/pizza': {
+      id: '/menu/pizza'
+      path: '/menu/pizza'
+      fullPath: '/menu/pizza'
+      preLoaderRoute: typeof MenuPizzaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/menu/rolls': {
+      id: '/menu/rolls'
+      path: '/menu/rolls'
+      fullPath: '/menu/rolls'
+      preLoaderRoute: typeof MenuRollsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/menu/sides': {
+      id: '/menu/sides'
+      path: '/menu/sides'
+      fullPath: '/menu/sides'
+      preLoaderRoute: typeof MenuSidesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/menu/wraps': {
+      id: '/menu/wraps'
+      path: '/menu/wraps'
+      fullPath: '/menu/wraps'
+      preLoaderRoute: typeof MenuWrapsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  ContactRoute: ContactRoute,
+  DealsRoute: DealsRoute,
+  GalleryRoute: GalleryRoute,
+  MenuBurgersRoute: MenuBurgersRoute,
+  MenuPastaRoute: MenuPastaRoute,
+  MenuPizzaRoute: MenuPizzaRoute,
+  MenuRollsRoute: MenuRollsRoute,
+  MenuSidesRoute: MenuSidesRoute,
+  MenuWrapsRoute: MenuWrapsRoute,
+  MenuIndexRoute: MenuIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

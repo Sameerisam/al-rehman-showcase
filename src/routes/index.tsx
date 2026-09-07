@@ -1,24 +1,40 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { AboutTeaser } from "@/components/site/AboutTeaser";
+import { BestSellers } from "@/components/site/BestSellers";
+import { Categories } from "@/components/site/Categories";
+import { ContactStrip } from "@/components/site/ContactStrip";
+import { Deals } from "@/components/site/Deals";
+import { FlavorMarquee } from "@/components/site/FlavorMarquee";
+import { Hero } from "@/components/site/Hero";
+import { PromoBanner } from "@/components/site/PromoBanner";
+import { Reviews } from "@/components/site/Reviews";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
 export const Route = createFileRoute("/")({
   component: Index,
+  head: () => ({
+    meta: [
+      { title: "AR Pizza & Cafe | Fresh. Hot. Loaded With Flavor." },
+      {
+        name: "description",
+        content:
+          "AR Pizza & Cafe near PCO, Chowk Chak Jano Kalan — pizzas, burgers, shawarma, wraps and hot deals. Order on WhatsApp.",
+      },
+    ],
+  }),
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
+    <main>
+      <Hero />
+      <FlavorMarquee />
+      <PromoBanner />
+      <Categories />
+      <BestSellers />
+      <Deals limit={3} />
+      <AboutTeaser />
+      <Reviews />
+      <ContactStrip />
+    </main>
   );
 }

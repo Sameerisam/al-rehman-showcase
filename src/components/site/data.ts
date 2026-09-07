@@ -6,7 +6,7 @@ import pizzaFajita from "@/assets/pizza-fajita.jpg";
 import pizzaBbq from "@/assets/pizza-bbq.jpg";
 import pizzaMalai from "@/assets/pizza-malai.jpg";
 import pizzaCheese from "@/assets/pizza-cheese.jpg";
-import pizzaSpecial from "@/assets/pizza-special.jpg";
+import pizzaSpecialImg from "@/assets/pizza-special.jpg";
 import burgerZinger from "@/assets/burger-zinger.jpg";
 import burgerBeef from "@/assets/burger-beef.jpg";
 import burgerBbq from "@/assets/burger-bbq.jpg";
@@ -20,16 +20,26 @@ import friesMasala from "@/assets/fries-masala.jpg";
 import friesLoaded from "@/assets/fries-loaded.jpg";
 import nuggets from "@/assets/nuggets.jpg";
 import wings from "@/assets/wings.jpg";
-import garlicBread from "@/assets/garlic-bread.jpg";
+import wingsOven from "@/assets/wings-oven.png";
 import sandwich from "@/assets/sandwich.jpg";
 import drinks from "@/assets/drinks.jpg";
-import dessert from "@/assets/dessert.jpg";
+import pastaCrispy from "@/assets/pasta-crispy.png";
+import pastaSpecialImg from "@/assets/pasta-special.png";
+import pastaVeg from "@/assets/pasta-veg.png";
 import dealFamily from "@/assets/deal-family.jpg";
 import dealCouple from "@/assets/deal-couple.jpg";
 import dealBurger from "@/assets/deal-burger.jpg";
 import dealStudent from "@/assets/deal-student.jpg";
 import aboutInterior from "@/assets/about-interior.jpg";
 import kitchen from "@/assets/kitchen.jpg";
+import locationMapOffline from "@/assets/location-map-offline.png";
+
+export const brand = {
+  name: "Al-Rehman",
+  shortName: "AR",
+  tagline: "Pizza & Cafe",
+  fullName: "AR Pizza & Cafe",
+};
 
 export const images = {
   heroSpread,
@@ -37,162 +47,23 @@ export const images = {
   logo,
   aboutInterior,
   kitchen,
+  locationMapOffline,
+};
+
+export type SizePrice = {
+  size: string;
+  price: string;
 };
 
 export type MenuItem = {
   name: string;
-  desc: string;
-  price: string;
+  desc?: string;
+  price?: string;
+  prices?: SizePrice[];
   image: string;
-  sizes?: string[];
   badge?: string;
   rating?: number;
 };
-
-export const pizzas: MenuItem[] = [
-  {
-    name: "Chicken Tikka",
-    desc: "Desi-style tikka chunks, red onions, green chillies and loads of mozzarella.",
-    price: "Rs. 1,099",
-    image: pizzaTikka,
-    sizes: ["S", "M", "L"],
-    badge: "Most Ordered",
-  },
-  {
-    name: "Chicken Fajita",
-    desc: "Grilled fajita strips, capsicum, onions and our signature sauce.",
-    price: "Rs. 1,149",
-    image: pizzaFajita,
-    sizes: ["S", "M", "L"],
-  },
-  {
-    name: "BBQ Chicken",
-    desc: "Smoky BBQ chicken, caramelized onions and a rich BBQ drizzle.",
-    price: "Rs. 1,149",
-    image: pizzaBbq,
-    sizes: ["S", "M", "L"],
-  },
-  {
-    name: "Malai Boti",
-    desc: "Creamy malai boti chunks over a white-sauce base with herbs.",
-    price: "Rs. 1,249",
-    image: pizzaMalai,
-    sizes: ["S", "M", "L"],
-  },
-  {
-    name: "Cheese Lover",
-    desc: "Double mozzarella, cheddar swirl and oregano. Pure cheese heaven.",
-    price: "Rs. 999",
-    image: pizzaCheese,
-    sizes: ["S", "M", "L"],
-  },
-  {
-    name: "Special Al-Rehman",
-    desc: "Tikka, fajita, kabab, olives and jalapeños — fully loaded, house special.",
-    price: "Rs. 1,399",
-    image: pizzaSpecial,
-    sizes: ["S", "M", "L"],
-    badge: "Chef's Pick",
-  },
-];
-
-export const burgers: MenuItem[] = [
-  {
-    name: "Zinger Burger",
-    desc: "Crunchy golden fillet, fresh lettuce and our creamy mayo.",
-    price: "Rs. 449",
-    image: burgerZinger,
-    badge: "Crowd Favorite",
-  },
-  {
-    name: "Beef Cheese Burger",
-    desc: "Juicy grilled beef patty with a molten cheddar blanket.",
-    price: "Rs. 549",
-    image: burgerBeef,
-  },
-  {
-    name: "BBQ Burger",
-    desc: "Grilled chicken, crispy onion rings and smoky BBQ sauce.",
-    price: "Rs. 499",
-    image: burgerBbq,
-  },
-  {
-    name: "Double Patty Special",
-    desc: "Two crispy fillets, double cheese and jalapeños. Not for the faint-hearted.",
-    price: "Rs. 749",
-    image: burgerDouble,
-    badge: "Hot Deal",
-  },
-];
-
-export const shawarmas: MenuItem[] = [
-  {
-    name: "Chicken Shawarma",
-    desc: "Flame-grilled marinated chicken, garlic sauce and pickles in toasted pita.",
-    price: "Rs. 249",
-    image: shawarmaChicken,
-  },
-  {
-    name: "Cheese Shawarma",
-    desc: "Our classic shawarma with a molten cheese pull in every bite.",
-    price: "Rs. 329",
-    image: shawarmaCheese,
-  },
-  {
-    name: "Special Shawarma",
-    desc: "Loaded platter-style shawarma with fries, extra sauce and veggies.",
-    price: "Rs. 399",
-    image: shawarmaSpecial,
-    badge: "Loaded",
-  },
-  {
-    name: "Arabic Shawarma",
-    desc: "Saj bread, hummus, tahini and pickles — the authentic Arabic way.",
-    price: "Rs. 449",
-    image: shawarmaArabic,
-  },
-];
-
-export const sides: MenuItem[] = [
-  {
-    name: "Regular Fries",
-    desc: "Golden, crispy and lightly salted — the classic everyone loves.",
-    price: "Rs. 199",
-    image: friesRegular,
-  },
-  {
-    name: "Masala Fries",
-    desc: "Dusted with chaat masala, fresh coriander and green chillies.",
-    price: "Rs. 249",
-    image: friesMasala,
-  },
-  {
-    name: "Loaded Fries",
-    desc: "Cheese sauce, crispy chicken chunks, jalapeños and mayo drizzle.",
-    price: "Rs. 449",
-    image: friesLoaded,
-    badge: "Must Try",
-  },
-  {
-    name: "Chicken Nuggets",
-    desc: "Six golden crispy nuggets with honey mustard and ketchup dips.",
-    price: "Rs. 399",
-    image: nuggets,
-  },
-  {
-    name: "Hot Wings",
-    desc: "Spicy glazed wings with sesame and spring onions. Extra napkins needed.",
-    price: "Rs. 449",
-    image: wings,
-    badge: "Spicy",
-  },
-  {
-    name: "Garlic Bread",
-    desc: "Freshly baked with garlic butter and herbs — the perfect sidekick.",
-    price: "Rs. 299",
-    image: garlicBread,
-  },
-];
 
 export type Deal = {
   name: string;
@@ -204,120 +75,377 @@ export type Deal = {
   image: string;
 };
 
-export const deals: Deal[] = [
+export type Category = {
+  name: string;
+  label: string;
+  image: string;
+  to: "/menu/pizza" | "/menu/burgers" | "/menu/rolls" | "/menu/wraps" | "/menu/pasta" | "/menu/sides" | "/deals";
+};
+
+function rs(n: number) {
+  return `Rs. ${n.toLocaleString("en-PK")}`;
+}
+
+/* ─── Contact ─── */
+
+export const contactInfo = {
+  address: "Near PCO, Chowk Chak Jano Kalan",
+  addressUrdu: "نزد PCO چوک چک جانو کلاں",
+  phone: "0315-9688216",
+  phones: ["0315-9688216"],
+  complaint: "0345-8592265",
+  whatsapp: "0344-8186216",
+  hours: "Monday — Sunday · 11:00 AM – 12:00 AM",
+  /** Approximate shop area pin — Chak Jano Kalan (near PCO / Gujrat–Sargodha Rd) */
+  lat: 32.45,
+  lng: 73.717,
+};
+
+/** WhatsApp requires international format: 92 + local number without leading 0 */
+export function toWhatsAppNumber(local: string) {
+  const digits = local.replace(/\D/g, "");
+  if (digits.startsWith("92")) return digits;
+  if (digits.startsWith("0")) return `92${digits.slice(1)}`;
+  return `92${digits}`;
+}
+
+export const whatsappHref = `https://wa.me/${toWhatsAppNumber(contactInfo.whatsapp)}`;
+export const phoneHref = `tel:${contactInfo.phone.replace(/\s/g, "")}`;
+export const phoneHrefs = contactInfo.phones.map((p) => `tel:${p.replace(/\s/g, "")}`);
+export const complaintHref = `tel:${contactInfo.complaint.replace(/\s/g, "")}`;
+export const mapsHref = `https://www.google.com/maps?q=${contactInfo.lat},${contactInfo.lng}`;
+export const mapsEmbedSrc = `https://maps.google.com/maps?q=${contactInfo.lat},${contactInfo.lng}&z=16&output=embed`;
+
+export function orderWhatsAppHref(itemName: string) {
+  const text = encodeURIComponent(`Assalam o Alaikum! I want to order: ${itemName}`);
+  return `${whatsappHref}?text=${text}`;
+}
+
+/* ─── Pizza ─── */
+
+export const pizzaRegularBase: SizePrice[] = [
+  { size: "Small", price: rs(490) },
+  { size: "Medium", price: rs(950) },
+  { size: "Large", price: rs(1250) },
+  { size: "Family", price: rs(1750) },
+];
+
+export const pizzaExtraToppings: SizePrice[] = [
+  { size: 'Small 8"', price: rs(100) },
+  { size: 'Medium 11"', price: rs(150) },
+  { size: 'Large 13"', price: rs(200) },
+  { size: "Family", price: rs(250) },
+];
+
+export const pizzaRegular: MenuItem[] = [
+  { name: "Chicken Tikka", desc: "Classic desi tikka topping on our regular crust.", prices: pizzaRegularBase, image: pizzaTikka, badge: "Popular" },
+  { name: "Chicken Bar BQ", desc: "Smoky BBQ chicken with a rich drizzle.", prices: pizzaRegularBase, image: pizzaBbq },
+  { name: "Chicken Fajita", desc: "Grilled fajita strips with capsicum and onion.", prices: pizzaRegularBase, image: pizzaFajita },
+  { name: "Hot Spicy", desc: "For heat lovers — bold spice on every slice.", prices: pizzaRegularBase, image: pizzaSpecialImg },
+  { name: "Pizza Vegetarian", desc: "Fresh veggies and cheese, no meat.", prices: pizzaRegularBase, image: pizzaCheese },
+  { name: "Cheese Lovers", desc: "Extra cheese, pure pull.", prices: pizzaRegularBase, image: pizzaCheese },
+  { name: "Achari Pizza", desc: "Tangy achari masala twist.", prices: pizzaRegularBase, image: pizzaTikka },
+  { name: "Supreme Pizza", desc: "Fully loaded supreme toppings.", prices: pizzaRegularBase, image: pizzaSpecialImg },
+];
+
+export const pizzaSpecialBase: SizePrice[] = [
+  { size: "Small", price: rs(550) },
+  { size: "Medium", price: rs(1050) },
+  { size: "Large", price: rs(1450) },
+  { size: "Family", price: rs(1850) },
+];
+
+export const pizzaPremiumBase: SizePrice[] = [
+  { size: "Medium", price: rs(1250) },
+  { size: "Large", price: rs(1650) },
+  { size: "Family", price: rs(2250) },
+];
+
+export const pizzaSpecial: MenuItem[] = [
+  { name: "Malai Boti Pizza", desc: "Creamy malai boti on a special base.", prices: pizzaSpecialBase, image: pizzaMalai },
+  { name: "Italian Pizza", desc: "Italian-style toppings and herbs.", prices: pizzaSpecialBase, image: pizzaSpecialImg },
+  { name: "Behari Kebab", desc: "Behari kebab flavour through every bite.", prices: pizzaSpecialBase, image: pizzaBbq },
+  { name: "Lazania Pizza", desc: "Lasagna-inspired layered pizza.", prices: pizzaSpecialBase, image: pizzaCheese },
+  { name: "Cheese Crust Pizza", desc: "Cheese-stuffed crust special.", prices: pizzaSpecialBase, image: pizzaCheese },
+  { name: "A.R Special", desc: "Our signature house special pizza.", prices: pizzaPremiumBase, image: pizzaSpecialImg, badge: "Chef's Pick" },
+  { name: "Kabab Crust", desc: "Kabab-loaded crust — premium special.", prices: pizzaPremiumBase, image: pizzaBbq, badge: "Premium" },
+  { name: "Crown Crust", desc: "Crown crust with dough balls on the rim.", prices: pizzaPremiumBase, image: pizzaSpecialImg, badge: "Premium" },
+  { name: "Slice Pizza", desc: "Single loaded slice.", price: rs(650), image: pizzaTikka },
+  { name: "Train Pizza", desc: "The big one — train pizza feast.", price: rs(3100), image: pizzaSpecialImg, badge: "Feast" },
+];
+
+/** @deprecated use pizzaRegular / pizzaSpecial — kept for compatibility */
+export const pizzas: MenuItem[] = [...pizzaRegular.slice(0, 4), ...pizzaSpecial.slice(0, 2)];
+
+/* ─── Burgers ─── */
+
+export const burgers: MenuItem[] = [
+  { name: "A.R Special Burger", desc: "Our house special stacked burger.", price: rs(450), image: burgerDouble, badge: "Signature" },
+  { name: "Chicken Burger", desc: "Classic chicken burger, simple and filling.", price: rs(320), image: burgerBeef },
+  { name: "Chicken with Cheese", desc: "Chicken burger with melted cheese.", price: rs(350), image: burgerBeef },
+  { name: "Zinger Burger", desc: "Crispy zinger fillet with fresh veggies.", price: rs(350), image: burgerZinger, badge: "Popular" },
+  { name: "Zinger with Cheese", desc: "Zinger plus a cheese blanket.", price: rs(400), image: burgerZinger },
+  { name: "Zinger Tower Burger", desc: "Tall, loaded zinger tower.", price: rs(600), image: burgerDouble, badge: "Loaded" },
+  { name: "Double Deckers Burger", desc: "Double-decker — two layers of crunch.", price: rs(650), image: burgerDouble },
+  { name: "Zinger Piece", desc: "Crispy zinger piece on its own.", price: rs(300), image: burgerBbq },
+];
+
+/* ─── Rolls ─── */
+
+export const rolls: MenuItem[] = [
+  { name: "Chicken Paratha", desc: "Chicken rolled in fresh paratha.", price: rs(230), image: shawarmaChicken },
+  { name: "Chicken Shawarma", desc: "Classic chicken shawarma wrap.", price: rs(230), image: shawarmaChicken, badge: "Popular" },
+  { name: "Chicken Cheese Shawarma", desc: "Shawarma with melted cheese.", price: rs(270), image: shawarmaCheese },
+  { name: "Kabab Roll", desc: "Kabab rolled tight and hot.", price: rs(400), image: shawarmaArabic },
+  { name: "Zinger Shawarma", desc: "Crispy zinger in shawarma style.", price: rs(330), image: shawarmaSpecial },
+  { name: "Zinger Cheese Shawarma", desc: "Zinger shawarma with cheese.", price: rs(350), image: shawarmaCheese },
+  { name: "Zinger Paratha", desc: "Zinger wrapped in paratha.", price: rs(300), image: shawarmaSpecial },
+  { name: "Zinger Cheese Paratha", desc: "Zinger, cheese, and paratha.", price: rs(350), image: shawarmaCheese },
+  { name: "Chicken Cheese Paratha", desc: "Chicken and cheese in paratha.", price: rs(300), image: shawarmaChicken },
+  { name: "Kabab Cheese Shawarma", desc: "Kabab shawarma with cheese.", price: rs(380), image: shawarmaArabic },
+  { name: "Platter Shawarma", desc: "Platter-style loaded shawarma.", price: rs(400), image: shawarmaSpecial, badge: "Loaded" },
+];
+
+/** @deprecated use rolls */
+export const shawarmas = rolls;
+
+/* ─── Wraps ─── */
+
+export const wraps: MenuItem[] = [
+  { name: "Chicken Wrap", desc: "Grilled chicken wrap with greens and sauce.", price: rs(400), image: sandwich },
+  { name: "Malaie Boti Wrap", desc: "Creamy malai boti in a soft wrap.", price: rs(430), image: sandwich },
+  { name: "Special Kabab Wrap", desc: "Special kabab wrap, fully loaded.", price: rs(450), image: sandwich },
+  { name: "Special Wrap A-R", desc: "Our A.R special wrap.", price: rs(480), image: sandwich, badge: "Signature" },
+  { name: "Spring Roll", desc: "Crispy spring roll.", price: rs(450), image: sandwich },
+];
+
+/* ─── Pasta ─── */
+
+export const pasta: MenuItem[] = [
   {
-    name: "Family Deal",
-    badge: "Best Seller",
-    badgeTone: "red",
-    includes: ["2 Large Pizzas (any flavor)", "1.5 Ltr Drink", "Fries Bucket"],
-    price: "Rs. 2,499",
-    wasPrice: "Rs. 3,199",
-    image: dealFamily,
+    name: "Crispy Pasta",
+    desc: "Crispy pasta — regular or large.",
+    prices: [
+      { size: "Regular", price: rs(450) },
+      { size: "Large", price: rs(750) },
+    ],
+    image: pastaCrispy,
   },
   {
-    name: "Couple Deal",
+    name: "Special Pasta",
+    desc: "House special pasta.",
+    prices: [
+      { size: "Regular", price: rs(450) },
+      { size: "Large", price: rs(750) },
+    ],
+    image: pastaSpecialImg,
     badge: "Popular",
+  },
+  {
+    name: "Vegetarian Pasta",
+    desc: "Veg pasta with fresh toppings.",
+    prices: [
+      { size: "Regular", price: rs(400) },
+      { size: "Large", price: rs(700) },
+    ],
+    image: pastaVeg,
+  },
+];
+
+/* ─── Wings, Nuggets & Fries ─── */
+
+export const wingsNuggets: MenuItem[] = [
+  {
+    name: "Hot Wings",
+    desc: "Spicy hot wings.",
+    prices: [
+      { size: "6 Pcs", price: rs(350) },
+      { size: "12 Pcs", price: rs(650) },
+    ],
+    image: wings,
+    badge: "Spicy",
+  },
+  {
+    name: "Oven Baked Wings",
+    desc: "Oven-baked wings.",
+    prices: [
+      { size: "6 Pcs", price: rs(350) },
+      { size: "12 Pcs", price: rs(650) },
+    ],
+    image: wingsOven,
+  },
+  {
+    name: "Nuggets",
+    desc: "Golden chicken nuggets.",
+    prices: [
+      { size: "6 Pcs", price: rs(350) },
+      { size: "12 Pcs", price: rs(650) },
+    ],
+    image: nuggets,
+  },
+];
+
+export const fries: MenuItem[] = [
+  { name: "Regular Fries", desc: "Classic salted fries.", price: rs(250), image: friesRegular },
+  { name: "French Fries Regular", desc: "French fries — regular size.", price: rs(300), image: friesMasala },
+  { name: "French Fries Large", desc: "French fries — large size.", price: rs(500), image: friesMasala },
+  { name: "Loaded Fries Regular", desc: "Loaded fries with toppings.", price: rs(450), image: friesLoaded, badge: "Must Try" },
+  { name: "Loaded Fries Large", desc: "Large loaded fries.", price: rs(750), image: friesLoaded },
+];
+
+export const sides: MenuItem[] = [...wingsNuggets, ...fries];
+
+/* ─── Deals ─── */
+
+export const deals: Deal[] = [
+  {
+    name: "Evening Deal 1",
+    badge: "Evening",
     badgeTone: "gold",
-    includes: ["1 Medium Pizza", "2 Regular Drinks", "Regular Fries"],
-    price: "Rs. 1,399",
-    wasPrice: "Rs. 1,749",
+    includes: ["1 Large Pizza", "1 Ltr Drink"],
+    price: rs(1400),
     image: dealCouple,
   },
   {
-    name: "Burger Deal",
-    badge: "Special",
+    name: "Mid Night Deal 2",
+    badge: "Midnight",
     badgeTone: "red",
-    includes: ["2 Zinger Burgers", "2 Regular Drinks", "Regular Fries"],
-    price: "Rs. 1,099",
-    wasPrice: "Rs. 1,399",
+    includes: ["2 Large Pizza", "1.5 Ltr Drink"],
+    price: rs(2650),
+    image: dealFamily,
+  },
+  {
+    name: "Zinger Deal 3",
+    badge: "Zinger",
+    badgeTone: "gold",
+    includes: ["3 Zinger Burgers", "1 Ltr Drink"],
+    price: rs(1200),
     image: dealBurger,
   },
   {
-    name: "Student Deal",
-    badge: "Save More",
+    name: "Pizza Deal 4",
+    badge: "Quick Bite",
     badgeTone: "gold",
-    includes: ["1 Chicken Shawarma", "Masala Fries", "1 Regular Drink"],
-    price: "Rs. 499",
-    wasPrice: "Rs. 649",
+    includes: ["1 Small Pizza", "Half Sting"],
+    price: rs(600),
     image: dealStudent,
   },
+  {
+    name: "Family Deal 5",
+    badge: "Best Value",
+    badgeTone: "red",
+    includes: [
+      "1 Large Pizza",
+      "1 Zinger Burger",
+      "1 Chicken Shawarma",
+      "1 Paratha Roll",
+      "12 Pcs Wings",
+      "Regular Fries",
+      "1.5 Ltr Cold Drink",
+    ],
+    price: rs(3050),
+    image: dealFamily,
+  },
+  {
+    name: "A.R Special Deal 6",
+    badge: "Signature",
+    badgeTone: "red",
+    includes: [
+      "1 Large A.R Special Pizza",
+      "3 Zinger Burgers",
+      "3 Chicken Shawarma",
+      "12 Pcs Wings",
+      "1.5 Ltr Cold Drink",
+    ],
+    price: rs(4000),
+    image: promoDeal,
+  },
+  {
+    name: "Yari Deal 7",
+    badge: "Share",
+    badgeTone: "gold",
+    includes: ["1 Large Pizza", "12 Pcs Wings", "1.5 Ltr Drink"],
+    price: rs(2100),
+    image: dealCouple,
+  },
 ];
+
+export const featuredDeal: Deal = deals.find((d) => d.name === "Family Deal 5") ?? deals[0]!;
 
 export const bestSellers: MenuItem[] = [
   {
     name: "Chicken Tikka Pizza",
-    desc: "The pizza that made us famous across the neighborhood.",
-    price: "Rs. 1,099",
+    desc: "Our most ordered regular pizza flavour.",
+    price: "From Rs. 490",
     image: pizzaTikka,
     rating: 4.9,
     badge: "Best Seller",
   },
   {
     name: "Zinger Burger",
-    desc: "Crispy, juicy and gone in sixty seconds.",
-    price: "Rs. 449",
+    desc: "Crispy, juicy and gone fast.",
+    price: rs(350),
     image: burgerZinger,
     rating: 4.8,
     badge: "Best Seller",
   },
   {
-    name: "Special Shawarma",
-    desc: "Loaded, saucy and grilled fresh on order.",
-    price: "Rs. 399",
-    image: shawarmaSpecial,
+    name: "Chicken Shawarma",
+    desc: "Classic shawarma done right.",
+    price: rs(230),
+    image: shawarmaChicken,
     rating: 4.9,
     badge: "Best Seller",
   },
   {
-    name: "Loaded Fries",
-    desc: "Cheesy, meaty, messy — exactly how fries should be.",
-    price: "Rs. 449",
-    image: friesLoaded,
-    rating: 4.7,
+    name: "A.R Special Pizza",
+    desc: "The house special everyone asks for.",
+    price: "From Rs. 1,250",
+    image: pizzaSpecialImg,
+    rating: 4.9,
     badge: "Best Seller",
   },
 ];
 
-export type Category = {
-  name: string;
-  label: string;
-  image: string;
-  href: string;
-};
-
 export const categories: Category[] = [
-  { name: "Pizza", label: "Cheesy & loaded", image: pizzaSpecial, href: "#pizzas" },
-  { name: "Burgers", label: "Crispy & juicy", image: burgerZinger, href: "#burgers" },
-  { name: "Shawarma", label: "Freshly grilled", image: shawarmaChicken, href: "#shawarma" },
-  { name: "Fries & Sides", label: "Golden & crispy", image: friesLoaded, href: "#sides" },
-  { name: "Fried Chicken", label: "Hot & crunchy", image: wings, href: "#sides" },
-  { name: "Sandwiches", label: "Stacked high", image: sandwich, href: "#sides" },
-  { name: "Fast Food", label: "All-time favorites", image: burgerDouble, href: "#menu" },
-  { name: "Drinks", label: "Chilled & fresh", image: drinks, href: "#menu" },
-  { name: "Desserts", label: "Sweet endings", image: dessert, href: "#menu" },
+  { name: "Pizza", label: "Regular & special", image: pizzaSpecialImg, to: "/menu/pizza" },
+  { name: "Burgers", label: "Zinger & more", image: burgerZinger, to: "/menu/burgers" },
+  { name: "Rolls", label: "Shawarma & paratha", image: shawarmaChicken, to: "/menu/rolls" },
+  { name: "Wraps", label: "Malai & kabab", image: sandwich, to: "/menu/wraps" },
+  { name: "Pasta", label: "Crispy & special", image: pastaSpecialImg, to: "/menu/pasta" },
+  { name: "Sides", label: "Wings, nuggets & fries", image: friesLoaded, to: "/menu/sides" },
+  { name: "Hot Deals", label: "Evening to midnight", image: dealFamily, to: "/deals" },
+];
+
+export const menuNav = [
+  { label: "Pizza", to: "/menu/pizza" as const },
+  { label: "Burgers", to: "/menu/burgers" as const },
+  { label: "Rolls", to: "/menu/rolls" as const },
+  { label: "Wraps", to: "/menu/wraps" as const },
+  { label: "Pasta", to: "/menu/pasta" as const },
+  { label: "Sides", to: "/menu/sides" as const },
 ];
 
 export const galleryImages: { src: string; alt: string }[] = [
-  { src: aboutInterior, alt: "Warm dining hall with brick oven glow" },
-  { src: pizzaTikka, alt: "Chicken tikka pizza with a cheese pull" },
-  { src: kitchen, alt: "Chef hand-tossing fresh pizza dough" },
+  { src: aboutInterior, alt: "Warm dining space at AR Pizza & Cafe" },
+  { src: pizzaTikka, alt: "Chicken tikka pizza" },
+  { src: kitchen, alt: "Fresh pizza dough in the kitchen" },
   { src: burgerZinger, alt: "Crispy zinger burger" },
-  { src: shawarmaSpecial, alt: "Loaded special shawarma platter" },
-  { src: dessert, alt: "Molten lava cake with ice cream" },
-  { src: dealFamily, alt: "Family deal feast on the table" },
-  { src: friesLoaded, alt: "Loaded cheese fries" },
-  { src: wings, alt: "Glazed hot wings with steam" },
-  { src: drinks, alt: "Chilled soft drinks and milkshake" },
+  { src: shawarmaSpecial, alt: "Loaded shawarma" },
+  { src: dealFamily, alt: "Family deal spread" },
+  { src: friesLoaded, alt: "Loaded fries" },
+  { src: wings, alt: "Hot wings" },
+  { src: pizzaSpecialImg, alt: "A.R special pizza" },
+  { src: drinks, alt: "Cold drinks" },
 ];
 
-export const socialImages: { src: string; alt: string }[] = [
-  { src: pizzaCheese, alt: "Cheese lover pizza pull" },
-  { src: burgerBeef, alt: "Beef cheese burger" },
-  { src: shawarmaCheese, alt: "Cheese shawarma" },
-  { src: friesMasala, alt: "Masala fries" },
-  { src: dessert, alt: "Brownie with ice cream" },
-  { src: wings, alt: "Hot wings" },
-];
+export function formatItemPrice(item: MenuItem): string {
+  if (item.price) return item.price;
+  const first = item.prices?.[0];
+  if (!first) return "";
+  if (item.prices!.length === 1) return first.price;
+  return `From ${first.price}`;
+}
 
 export type Review = {
   name: string;
@@ -328,38 +456,24 @@ export type Review = {
 
 export const reviews: Review[] = [
   {
-    name: "Ahmed Raza",
-    area: "Gulberg",
+    name: "Local Guest",
+    area: "Chak Jano Kalan",
     rating: 5,
-    quote:
-      "The chicken tikka pizza is hands down the best in town. Fresh dough, generous toppings and always delivered hot.",
+    quote: "Fresh pizza and fast WhatsApp orders — our go-to for family nights.",
   },
   {
-    name: "Fatima Khan",
-    area: "Model Town",
+    name: "Regular Customer",
+    area: "Near PCO",
     rating: 5,
-    quote:
-      "Their zinger is crispy, juicy and never oily. My kids refuse to eat burgers from anywhere else now!",
-  },
-  {
-    name: "Bilal Sheikh",
-    area: "DHA",
-    rating: 4,
-    quote:
-      "Shawarma loaded with chicken and that garlic sauce is addictive. Late-night orders always arrive fast.",
-  },
-  {
-    name: "Ayesha Malik",
-    area: "Bahria Town",
-    rating: 5,
-    quote:
-      "Family deal is amazing value — two huge pizzas, drinks and fries. Quality is consistent every single time.",
+    quote: "Zinger and shawarma always hit the spot. Family Deal is great value.",
   },
 ];
 
-export const contactInfo = {
-  address: "Main Boulevard, Gulberg III, Lahore, Pakistan",
-  phone: "+92 300 1234567",
-  whatsapp: "+92 300 1234567",
-  hours: "Monday — Sunday · 11:00 AM – 12:00 AM",
-};
+export const socialImages: { src: string; alt: string }[] = [
+  { src: pizzaCheese, alt: "Cheese pizza" },
+  { src: burgerZinger, alt: "Zinger burger" },
+  { src: shawarmaCheese, alt: "Cheese shawarma" },
+  { src: friesLoaded, alt: "Loaded fries" },
+  { src: wings, alt: "Hot wings" },
+  { src: pizzaSpecialImg, alt: "Special pizza" },
+];

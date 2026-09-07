@@ -94,6 +94,7 @@
   html {
     scroll-behavior: smooth;
     scroll-padding-top: 88px;
+    overflow-x: hidden;
   }
 
   body {
@@ -101,6 +102,18 @@
     color: var(--color-foreground);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    text-rendering: optimizeLegibility;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  button,
+  a {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: color-mix(in oklab, var(--gold) 22%, transparent);
   }
 
   ::selection {
@@ -112,10 +125,12 @@
 /* ---------- Brand utilities ---------- */
 
 @utility btn-gold {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
+  overflow: hidden;
   border-radius: 9999px;
   background-color: var(--gold);
   padding: 0.8rem 1.75rem;
@@ -126,14 +141,32 @@
   text-transform: uppercase;
   color: var(--ink);
   box-shadow: 0 10px 28px -10px color-mix(in oklab, var(--gold-deep) 70%, transparent);
-  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.35s ease,
+    color 0.35s ease, box-shadow 0.35s ease;
   cursor: pointer;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(105deg, transparent 40%, rgb(255 255 255 / 0.45) 50%, transparent 60%);
+    transform: translateX(-120%);
+    transition: transform 0.7s ease;
+  }
 
   &:hover {
     background-color: var(--gold-deep);
     color: var(--cream);
-    transform: translateY(-2px);
+    transform: translateY(-3px) scale(1.03);
     box-shadow: 0 16px 34px -10px color-mix(in oklab, var(--gold-deep) 80%, transparent);
+  }
+
+  &:hover::after {
+    transform: translateX(120%);
+  }
+
+  &:active {
+    transform: translateY(0) scale(0.97);
   }
 }
 
@@ -150,13 +183,18 @@
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--gold);
-  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.35s ease,
+    color 0.35s ease, border-color 0.35s ease;
   cursor: pointer;
 
   &:hover {
     background-color: var(--gold);
     color: var(--ink);
-    transform: translateY(-2px);
+    transform: translateY(-3px) scale(1.03);
+  }
+
+  &:active {
+    transform: translateY(0) scale(0.97);
   }
 }
 
@@ -183,11 +221,23 @@
 
 .reveal {
   opacity: 0;
-  transform: translateY(28px);
+  transform: translateY(32px);
   transition:
-    opacity 0.7s ease,
-    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    opacity 0.75s ease,
+    transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
   will-change: opacity, transform;
+}
+
+.reveal-left {
+  transform: translateX(-36px);
+}
+
+.reveal-right {
+  transform: translateX(36px);
+}
+
+.reveal-scale {
+  transform: scale(0.9);
 }
 
 .reveal.is-visible {
@@ -197,23 +247,37 @@
 
 @keyframes hero-zoom {
   from {
-    transform: scale(1.12);
-    opacity: 0.5;
+    transform: scale(1.18);
+    opacity: 0.45;
   }
   to {
-    transform: scale(1);
+    transform: scale(1.05);
     opacity: 1;
   }
 }
 
+@keyframes kenburns {
+  0% {
+    transform: scale(1.05) translate3d(0, 0, 0);
+  }
+  50% {
+    transform: scale(1.14) translate3d(-1.5%, -1%, 0);
+  }
+  100% {
+    transform: scale(1.08) translate3d(1%, 0.5%, 0);
+  }
+}
+
 .hero-media {
-  animation: hero-zoom 1.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation:
+    hero-zoom 1.9s cubic-bezier(0.22, 1, 0.36, 1) both,
+    kenburns 22s 1.9s ease-in-out infinite alternate;
 }
 
 @keyframes hero-rise {
   from {
     opacity: 0;
-    transform: translateY(26px);
+    transform: translateY(28px);
   }
   to {
     opacity: 1;
@@ -222,7 +286,7 @@
 }
 
 .hero-rise {
-  animation: hero-rise 0.85s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: hero-rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 @keyframes float-pulse {
@@ -231,7 +295,7 @@
     box-shadow: 0 0 0 0 color-mix(in oklab, var(--whatsapp) 45%, transparent);
   }
   50% {
-    box-shadow: 0 0 0 12px transparent;
+    box-shadow: 0 0 0 14px transparent;
   }
 }
 
@@ -239,14 +303,245 @@
   animation: float-pulse 2.4s ease-out infinite;
 }
 
+@keyframes float-y {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.float-y {
+  animation: float-y 4.5s ease-in-out infinite;
+}
+
+@keyframes glow-orb {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.65;
+    transform: scale(1.18);
+  }
+}
+
+.glow-orb {
+  animation: glow-orb 6s ease-in-out infinite;
+}
+
+@keyframes badge-bob {
+  0%,
+  100% {
+    transform: rotate(-6deg) translateY(0);
+  }
+  50% {
+    transform: rotate(-3deg) translateY(-6px);
+  }
+}
+
+.badge-bob {
+  animation: badge-bob 3.2s ease-in-out infinite;
+}
+
+@keyframes bounce-chevron {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.55;
+  }
+  50% {
+    transform: translateY(8px);
+    opacity: 1;
+  }
+}
+
+.bounce-chevron {
+  animation: bounce-chevron 1.8s ease-in-out infinite;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 32s linear infinite;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes shine-sweep {
+  0% {
+    transform: translateX(-130%) skewX(-16deg);
+  }
+  100% {
+    transform: translateX(230%) skewX(-16deg);
+  }
+}
+
+.img-shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.img-shine::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 35%,
+    rgb(255 255 255 / 0.28) 50%,
+    transparent 65%
+  );
+  transform: translateX(-130%) skewX(-16deg);
+  pointer-events: none;
+  opacity: 0;
+}
+
+.group:hover .img-shine::after,
+.img-shine:hover::after {
+  animation: shine-sweep 0.9s ease;
+  opacity: 1;
+}
+
+@keyframes cart-pop {
+  0% {
+    transform: scale(0.4);
+  }
+  70% {
+    transform: scale(1.18);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.cart-pop {
+  animation: cart-pop 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes nav-in {
+  from {
+    opacity: 0;
+    transform: translateX(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.nav-in {
+  animation: nav-in 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes gold-line {
+  from {
+    width: 0;
+    opacity: 0;
+  }
+  to {
+    width: 4.5rem;
+    opacity: 1;
+  }
+}
+
+.gold-line {
+  display: block;
+  height: 3px;
+  border-radius: 9999px;
+  background: var(--gold);
+  animation: gold-line 0.9s 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.card-lift {
+  transition:
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.45s ease;
+}
+
+.card-lift:active {
+  transform: scale(0.98);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .card-lift:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow:
+      0 24px 48px -18px rgb(0 0 0 / 0.35),
+      0 0 0 1px color-mix(in oklab, var(--gold) 28%, transparent);
+  }
+
+  .img-zoom {
+    transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .group:hover .img-zoom,
+  .img-zoom:hover {
+    transform: scale(1.12);
+  }
+}
+
+.img-zoom {
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.nav-link {
+  position: relative;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  height: 2px;
+  width: 0;
+  background: var(--gold);
+  transition: width 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.nav-link:hover::after,
+.nav-link.is-active::after {
+  width: 100%;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .reveal,
   .hero-media,
   .hero-rise,
-  .whatsapp-pulse {
-    animation: none;
-    transition: none;
+  .whatsapp-pulse,
+  .float-y,
+  .glow-orb,
+  .badge-bob,
+  .bounce-chevron,
+  .marquee-track,
+  .cart-pop,
+  .nav-in,
+  .gold-line,
+  .img-shine::after {
+    animation: none !important;
+    transition: none !important;
     opacity: 1;
+    transform: none;
+  }
+
+  .card-lift:hover,
+  .btn-gold:hover,
+  .btn-outline:hover {
     transform: none;
   }
 }
